@@ -1,22 +1,23 @@
-name: Dev CI pipeline
+name: Dev CI Pipeline
+
 on:
   push:
-    branches: 
-     - dev
+    branches:
+      - dev
+
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
+
     steps:
-       - name : checkout Code
-         uses : actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-       - name : Setup the Docker build
-         run : docker --version
+      - name: Login to DockerHub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-       - name  : Build Dcoker Image
-         run : docker build -t multi-env-ci-cd-app:dev .
-         
-       - name : Verify Dcoker Image
-         run : docker images
+      - name: Build Docker Image
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/multi-env-ci-cd-app:dev .
 
-        
+      - name: Push Docker Image
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/multi-env-ci-cd-app:dev
