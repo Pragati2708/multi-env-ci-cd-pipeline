@@ -7,16 +7,16 @@ job:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name : checkout Code
-        uses : actions/checkout@v4
+       - name : checkout Code
+         uses : actions/checkout@v4
 
-      - name : Setup the Docker build
-        run : docker --version
+       - name : Setup the Docker build
+         run : docker --version
 
-        -name  : Build Dcoker Image
-        run : docker build -t multi-env-ci-cd-app:dev .
+       - name  : Build Dcoker Image
+         run : docker build -t multi-env-ci-cd-app:dev .
          
-        -name : Verify Dcoker Image
-        run : docker images
+       - name : Verify Dcoker Image
+         run : docker images
 
         
