@@ -1,0 +1,14 @@
+{
+  "name": "multi-env-ci-cd-app",
+  "version": "1.0.0",
+  "description": "Node.js app for multi environment CI/CD pipeline",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Pragati Singh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
