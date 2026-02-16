@@ -4,7 +4,7 @@ const os = require("os");
 const app = express();
 const PORT = 3000;
 
-// Root endpoint
+// Root endpoint - just a simple message to confirm the app is running
 app.get("/", (req, res) => {
   res.send("🚀 DevOps CI/CD Pipeline - DEV Environment");
 });
