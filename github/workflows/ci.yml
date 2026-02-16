@@ -1,0 +1,22 @@
+name: Dev CI pipeline
+on:
+  push:
+    branches: 
+     - dev
+job:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name : checkout Code
+        uses : actions/checkout@v4
+
+      - name : Setup the Docker build
+        run : docker --version
+
+        -name  : Build Dcoker Image
+        run : docker build -t multi-env-ci-cd-app:dev .
+         
+        -name : Verify Dcoker Image
+        run : docker images
+
+        
